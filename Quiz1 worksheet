@@ -1,0 +1,27 @@
+#Quiz 1, Q1
+#Download the 2006 microdata survey using download.file, and load the data into R
+
+#download.file(url, destfile, method, ...)
+#create a file in working directory
+file.create("~/Desktop/survey.csv")
+
+#assign url and destfile
+url<-"http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv"
+destfile<-"~/Desktop/survey.csv"
+
+#download data to destfile
+download.file(url,destfile,"curl")
+
+#load data into R
+survey<-read.csv("~/Desktop/survey.csv")
+
+#How many properties are worth $1M or more?
+#Based on codebook, "VAL" is the variable representing property value; level "24" corresponds to >= $1M
+#subset the "VAL" variable
+x<-survey[,"VAL"]
+
+#remove "NA"
+w<-x[!is.na(x)]
+
+#sum to find instances of "VAL" greater than or equal to 24
+sum(w>=24)
