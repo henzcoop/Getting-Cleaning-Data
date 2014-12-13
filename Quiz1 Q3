@@ -14,3 +14,10 @@ download.file(url,destfile,"curl")
 library(xlsx)
 
 #Read rows 18-23 and columns 7-15 into R and assign the result to a variable called "dat"
+ dat<-read.xlsx("~/Desktop/gas.xlsx",sheetIndex=1,rowIndex=18:23, colIndex=7:15,header=T)
+
+#What is the value of sum(dat$Zip*dat$Ext,na.rm=T)?
+
+sum(dat$Zip*dat$Ext,na.rm=T)
+
+  
