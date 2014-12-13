@@ -1,0 +1,13 @@
+#Read the XML data on Baltimore restaurants
+#load XML library
+library(XML)
+
+#read data
+baltdata<-xmlParse("http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml")
+
+#convert to dataframe, specifying zipcode data
+zips<-xmlToDataFrame(nodes=getNodeSet(baltdata,"//zipcode"))
+
+How many restaurants have zipcode 21231? 
+#sum number of zipcodes equal to 21231
+sum(zips==21231)
