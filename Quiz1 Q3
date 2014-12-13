@@ -1,0 +1,16 @@
+#Download the Excel spreadsheet on Natural Gas Aquisition Program
+
+#create file in working directory
+file.create("~/Desktop/gas.xlsx")
+
+#assign url and destination file
+url<-"http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FDATA.gov_NGAP.xlsx"
+destfile<-("~/Desktop/gas.xlsx")
+
+#download file to destfile
+download.file(url,destfile,"curl")
+
+#load xlsx library module
+library(xlsx)
+
+#Read rows 18-23 and columns 7-15 into R and assign the result to a variable called "dat"
