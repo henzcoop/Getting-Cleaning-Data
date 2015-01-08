@@ -53,3 +53,24 @@ zips<-xmlToDataFrame(nodes=getNodeSet(baltdata,"//zipcode"))
 How many restaurants have zipcode 21231?
 #sum number of zipcodes equal to 21231
 sum(zips==21231)
+
+#Question 5
+#Download the 2006 microdata survey about housing for the state of Idaho using download.file()
+#using the fread() command and load the data into an R object, "DT"
+#load library for data.table
+library(data.table)
+#use fread() to read file into R object called "DT"
+DT<-fread("http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv")
+#Which of the following is the fastest way to calculate the average value of the variable pwgtp15
+#broken down by sex using the data.table package?
+#Test each answer for ability to generate mean, by sex; only three possible answers remain.
+#Test speed of each of the three functions using system.time()
+> system.time(DT[,mean(pwgtp15),by=SEX])
+user system elapsed
+0.002 0.000 0.002
+> system.time(sapply(split(DT$pwgtp15,DT$SEX),mean))
+user system elapsed
+0.001 0.000 0.001
+> system.time(tapply(DT$pwgtp15,DT$SEX,mean))
+user system elapsed
+0.002 0.000 0.002
