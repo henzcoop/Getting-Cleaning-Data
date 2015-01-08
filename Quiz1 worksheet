@@ -1,4 +1,4 @@
-#Quiz 1, Q1
+#Question 1
 #Download the 2006 microdata survey using download.file, and load the data into R
 
 #download.file(url, destfile, method, ...)
@@ -25,3 +25,19 @@ w<-x[!is.na(x)]
 
 #sum to find instances of "VAL" greater than or equal to 24
 sum(w>=24)
+
+#Question 3
+#Download the Excel spreadsheet on Natural Gas Aquisition Program
+#create file in working directory
+file.create("~/Desktop/gas.xlsx")
+#assign url and destination file
+url<-"http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FDATA.gov_NGAP.xlsx"
+destfile<-("~/Desktop/gas.xlsx")
+#download file to destfile
+download.file(url,destfile,"curl")
+#load xlsx library module
+library(xlsx)
+#Read rows 18-23 and columns 7-15 into R and assign the result to a variable called "dat"
+dat<-read.xlsx("~/Desktop/gas.xlsx",sheetIndex=1,rowIndex=18:23, colIndex=7:15,header=T)
+#What is the value of sum(dat$Zip*dat$Ext,na.rm=T)?
+sum(dat$Zip*dat$Ext,na.rm=T)
