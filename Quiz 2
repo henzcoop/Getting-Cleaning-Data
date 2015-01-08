@@ -1,4 +1,4 @@
-#Getting and Cleaning Data; Quiz 2, Question1
+#Question1
 #Register an application with the Github API here https://github.com/settings/applications.
 >library(httr)
 
